@@ -7,8 +7,8 @@
     {
       "name": "nanfengcheong-skills",
       "source": {
-        "source": "url",
-        "url": "./"
+        "source": "local",
+        "path": "./plugins/nanfengcheong-skills"
       },
       "policy": {
         "installation": "AVAILABLE",
