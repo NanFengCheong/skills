@@ -16,7 +16,7 @@
     "planning",
     "agent-team"
   ],
-  "skills": "./skills/",
+  "skills": "./codex-skills/",
   "interface": {
     "displayName": "NanFengCheong Skills",
     "shortDescription": "Codex workflows for planning and shipping",
