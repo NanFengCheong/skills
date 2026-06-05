@@ -1,6 +1,6 @@
 ---
 name: write-a-skill
-description: Create new agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write, or build a new skill.
+description: Create new Codex skills with proper structure, progressive disclosure, optional bundled resources, and `agents/openai.yaml` metadata. Use when the user wants to create, write, update, or build a skill.
 ---
 
 # Writing Skills
@@ -14,9 +14,10 @@ description: Create new agent skills with proper structure, progressive disclosu
    - Any reference materials to include?
 
 2. **Draft the skill** - create:
-   - SKILL.md with concise instructions
+   - `SKILL.md` with concise instructions
+   - `agents/openai.yaml` with Codex interface metadata
    - Additional reference files if content exceeds 500 lines
-   - Utility scripts if deterministic operations needed
+   - Utility scripts if deterministic operations are needed
 
 3. **Review with user** - present draft and ask:
    - Does this cover your use cases?
@@ -27,10 +28,10 @@ description: Create new agent skills with proper structure, progressive disclosu
 
 ```
 skill-name/
-├── SKILL.md           # Main instructions (required)
-├── REFERENCE.md       # Detailed docs (if needed)
-├── EXAMPLES.md        # Usage examples (if needed)
-└── scripts/           # Utility scripts (if needed)
+├── SKILL.md              # Main instructions (required)
+├── agents/openai.yaml    # Codex UI metadata (recommended)
+├── references/           # Detailed docs (if needed)
+└── scripts/              # Utility scripts (if needed)
     └── helper.js
 ```
 
@@ -54,14 +55,14 @@ description: Brief description of capability. Use when [specific triggers].
 
 ## Advanced features
 
-[Link to separate files: See [REFERENCE.md](REFERENCE.md)]
+[Link to separate files: See [references/ref.md](references/ref.md)]
 ```
 
 ## Description Requirements
 
-The description is **the only thing your agent sees** when deciding which skill to load. It's surfaced in the system prompt alongside all other installed skills. Your agent reads these descriptions and picks the relevant skill based on the user's request.
+The description is the main trigger Codex sees when deciding which skill to load. It is surfaced alongside all other installed skills. Codex reads these descriptions and picks the relevant skill based on the user's request.
 
-**Goal**: Give your agent just enough info to know:
+**Goal**: Give Codex just enough info to know:
 
 1. What capability this skill provides
 2. When/why to trigger it (specific keywords, contexts, file types)
@@ -85,7 +86,7 @@ Extract text and tables from PDF files, fill forms, merge documents. Use when wo
 Helps with documents.
 ```
 
-The bad example gives your agent no way to distinguish this from other document skills.
+The bad example gives Codex no way to distinguish this from other document skills.
 
 ## When to Add Scripts
 
@@ -115,3 +116,4 @@ After drafting, verify:
 - [ ] Consistent terminology
 - [ ] Concrete examples included
 - [ ] References one level deep
+- [ ] `agents/openai.yaml` has `display_name`, `short_description`, and `default_prompt`

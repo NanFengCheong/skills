@@ -1,0 +1,4 @@
+interface:
+  display_name: "Triage"
+  short_description: "Move issues through triage states"
+  default_prompt: "Use $triage to review this issue and recommend the next triage state."

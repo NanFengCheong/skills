@@ -1,0 +1,4 @@
+interface:
+  display_name: "Execute Plan Using Agent Team"
+  short_description: "Run plans with Codex agent teams"
+  default_prompt: "Use $execute-plan-using-agent-team to execute this implementation plan with an agent team."

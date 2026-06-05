@@ -8,9 +8,9 @@
   </a>
 </p>
 
-# Skills For Real Engineers
+# NanFengCheong Skills
 
-[![skills.sh](https://skills.sh/b/mattpocock/skills)](https://skills.sh/mattpocock/skills)
+[![skills.sh](https://skills.sh/b/NanFengCheong/skills)](https://skills.sh/NanFengCheong/skills)
 
 My agent skills that I use every day to do real engineering - not vibe coding.
 
@@ -22,22 +22,31 @@ If you want to keep up with changes to these skills, and any new ones I create, 
 
 [Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)
 
-## Quickstart (30-second setup)
+## Quickstart
 
-1. Run the skills.sh installer:
+1. Add this repo as a Codex plugin marketplace:
 
-```bash
-npx skills@latest add mattpocock/skills
-```
+   ```bash
+   codex plugin marketplace add NanFengCheong/skills --ref main
+   ```
 
-2. Pick the skills you want, and which coding agents you want to install them on. **Make sure you select `/setup-matt-pocock-skills`**.
+2. Restart Codex, open the plugin directory, and install **NanFengCheong Skills**.
 
-3. Run `/setup-matt-pocock-skills` in your agent. It will:
+3. Run `$setup-matt-pocock-skills` in your agent. It will:
    - Ask you which issue tracker you want to use (GitHub, Linear, or local files)
-   - Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)
+   - Ask you what labels you apply to tickets when you triage them (`$triage` uses labels)
    - Ask you where you want to save any docs we create
 
-4. Bam - you're ready to go.
+4. Use the default flow below for feature work and bug fixes.
+
+## Default Feature/Bug-Fix Flow
+
+Use this sequence for feature work and bug fixes:
+
+1. `$grill-with-docs` — clarify scope, vocabulary, constraints, and docs.
+2. `$to-prd` — publish the agreed scope as a PRD.
+3. `$to-implementation-plan` — convert the PRD into executable slices.
+4. `$execute-plan-using-agent-team` — implement the plan with lead, worker, and skeptic tracks.
 
 ## Why These Skills Exist
 
@@ -55,8 +64,8 @@ This is just the same in the AI age. There is a communication gap between you an
 
 **The Fix** is to use:
 
-- [`/grill-me`](./skills/productivity/grill-me/SKILL.md) - for non-code uses
-- [`/grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md) - same as [`/grill-me`](./skills/productivity/grill-me/SKILL.md), but adds more goodies (see below)
+- [`$grill-me`](./skills/productivity/grill-me/SKILL.md) - for non-code uses
+- [`$grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md) - same as [`$grill-me`](./skills/productivity/grill-me/SKILL.md), but adds more goodies (see below)
 
 These are my most popular skills. They help you align with the agent before you get started, and think deeply about the change you're making. Use them _every_ time you want to make a change.
 
@@ -86,7 +95,7 @@ This concision pays off session after session.
 
 </details>
 
-This is built into [`/grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md). It's a grilling session, but that helps you build a shared language with the AI, and document hard-to-explain decisions in ADR's.
+This is built into [`$grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md). It's a grilling session, but that helps you build a shared language with the AI, and document hard-to-explain decisions in ADR's.
 
 It's hard to explain how powerful this is. It might be the single coolest technique in this repo. Try it, and see.
 
@@ -111,9 +120,9 @@ It's time to look at your feedback loops. Without feedback on how the code it pr
 
 For automated tests, a red-green-refactor loop is critical. This is where the agent writes a failing test first, then fixes the test. This helps give the agent a consistent level of feedback that results in far better code.
 
-I've built a **[`/tdd`](./skills/engineering/tdd/SKILL.md) skill** you can slot into any project. It encourages red-green-refactor and gives the agent plenty of guidance on what makes good and bad tests.
+I've built a **[`$tdd`](./skills/engineering/tdd/SKILL.md) skill** you can slot into any project. It encourages red-green-refactor and gives the agent plenty of guidance on what makes good and bad tests.
 
-For debugging, I've also built a **[`/diagnose`](./skills/engineering/diagnose/SKILL.md)** skill that wraps best debugging practices into a simple loop.
+For debugging, I've also built a **[`$diagnose`](./skills/engineering/diagnose/SKILL.md)** skill that wraps best debugging practices into a simple loop.
 
 ### #4: We Built A Ball Of Mud
 
@@ -131,10 +140,10 @@ For debugging, I've also built a **[`/diagnose`](./skills/engineering/diagnose/S
 
 This is built in to every layer of these skills:
 
-- [`/to-prd`](./skills/engineering/to-prd/SKILL.md) quizzes you about which modules you're touching before creating a PRD
-- [`/zoom-out`](./skills/engineering/zoom-out/SKILL.md) tells the agent to explain code in the context of the whole system
+- [`$to-prd`](./skills/engineering/to-prd/SKILL.md) quizzes you about which modules you're touching before creating a PRD
+- [`$zoom-out`](./skills/engineering/zoom-out/SKILL.md) tells the agent to explain code in the context of the whole system
 
-And crucially, [`/improve-codebase-architecture`](./skills/engineering/improve-codebase-architecture/SKILL.md) helps you rescue a codebase that has become a ball of mud. I recommend running it on your codebase once every few days.
+And crucially, [`$improve-codebase-architecture`](./skills/engineering/improve-codebase-architecture/SKILL.md) helps you rescue a codebase that has become a ball of mud. I recommend running it on your codebase once every few days.
 
 ### Summary
 
@@ -147,15 +156,15 @@ Software engineering fundamentals matter more than ever. These skills are my bes
 Skills I use daily for code work.
 
 - **[diagnose](./skills/engineering/diagnose/SKILL.md)** — Disciplined diagnosis loop for hard bugs and performance regressions: reproduce → minimise → hypothesise → instrument → fix → regression-test.
+- **[execute-plan-using-agent-team](./skills/engineering/execute-plan-using-agent-team/SKILL.md)** — Execute an implementation plan with a Codex agent team, including lead integration, bounded worker tracks, a skepticism track, and final verification.
 - **[grill-with-docs](./skills/engineering/grill-with-docs/SKILL.md)** — Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates `CONTEXT.md` and ADRs inline.
 - **[triage](./skills/engineering/triage/SKILL.md)** — Triage issues through a state machine of triage roles.
 - **[improve-codebase-architecture](./skills/engineering/improve-codebase-architecture/SKILL.md)** — Find deepening opportunities in a codebase, informed by the domain language in `CONTEXT.md` and the decisions in `docs/adr/`.
-- **[setup-matt-pocock-skills](./skills/engineering/setup-matt-pocock-skills/SKILL.md)** — Scaffold the per-repo config (issue tracker, triage label vocabulary, domain doc layout) that the other engineering skills consume. Run once per repo before using `to-issues`, `to-prd`, `triage`, `diagnose`, `tdd`, `improve-codebase-architecture`, or `zoom-out`.
+- **[setup-matt-pocock-skills](./skills/engineering/setup-matt-pocock-skills/SKILL.md)** — Scaffold the per-repo config (issue tracker, triage label vocabulary, domain doc layout) that the other engineering skills consume. Run once per repo before using `to-prd`, `to-implementation-plan`, `execute-plan-using-agent-team`, `triage`, `diagnose`, `tdd`, `improve-codebase-architecture`, or `zoom-out`.
 - **[tdd](./skills/engineering/tdd/SKILL.md)** — Test-driven development with a red-green-refactor loop. Builds features or fixes bugs one vertical slice at a time.
-- **[to-issues](./skills/engineering/to-issues/SKILL.md)** — Break any plan, spec, or PRD into independently-grabbable GitHub issues using vertical slices.
+- **[to-implementation-plan](./skills/engineering/to-implementation-plan/SKILL.md)** — Convert a PRD or agreed feature/bug-fix scope into executable slices, verification gates, and agent-team decomposition.
 - **[to-prd](./skills/engineering/to-prd/SKILL.md)** — Turn the current conversation context into a PRD and submit it as a GitHub issue. No interview — just synthesizes what you've already discussed.
 - **[zoom-out](./skills/engineering/zoom-out/SKILL.md)** — Tell the agent to zoom out and give broader context or a higher-level perspective on an unfamiliar section of code.
-- **[prototype](./skills/engineering/prototype/SKILL.md)** — Build a throwaway prototype to flesh out a design — either a runnable terminal app for state/business-logic questions, or several radically different UI variations toggleable from one route.
 
 ### Productivity
 
@@ -165,12 +174,3 @@ General workflow tools, not code-specific.
 - **[grill-me](./skills/productivity/grill-me/SKILL.md)** — Get relentlessly interviewed about a plan or design until every branch of the decision tree is resolved.
 - **[handoff](./skills/productivity/handoff/SKILL.md)** — Compact the current conversation into a handoff document so another agent can continue the work.
 - **[write-a-skill](./skills/productivity/write-a-skill/SKILL.md)** — Create new skills with proper structure, progressive disclosure, and bundled resources.
-
-### Misc
-
-Tools I keep around but rarely use.
-
-- **[git-guardrails-claude-code](./skills/misc/git-guardrails-claude-code/SKILL.md)** — Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, etc.) before they execute.
-- **[migrate-to-shoehorn](./skills/misc/migrate-to-shoehorn/SKILL.md)** — Migrate test files from `as` type assertions to @total-typescript/shoehorn.
-- **[scaffold-exercises](./skills/misc/scaffold-exercises/SKILL.md)** — Create exercise directory structures with sections, problems, solutions, and explainers.
-- **[setup-pre-commit](./skills/misc/setup-pre-commit/SKILL.md)** — Set up Husky pre-commit hooks with lint-staged, Prettier, type checking, and tests.

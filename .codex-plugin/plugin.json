@@ -1,0 +1,55 @@
+{
+  "name": "nanfengcheong-skills",
+  "version": "0.1.0",
+  "description": "Codex-optimized engineering and productivity skills for planning, implementation, triage, debugging, and concise collaboration.",
+  "author": {
+    "name": "NanFengCheong",
+    "url": "https://github.com/NanFengCheong"
+  },
+  "homepage": "https://github.com/NanFengCheong/skills",
+  "repository": "https://github.com/NanFengCheong/skills",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "skills",
+    "engineering",
+    "planning",
+    "agent-team"
+  ],
+  "skills": [
+    "./skills/engineering/diagnose",
+    "./skills/engineering/execute-plan-using-agent-team",
+    "./skills/engineering/grill-with-docs",
+    "./skills/engineering/improve-codebase-architecture",
+    "./skills/engineering/setup-matt-pocock-skills",
+    "./skills/engineering/tdd",
+    "./skills/engineering/to-implementation-plan",
+    "./skills/engineering/to-prd",
+    "./skills/engineering/triage",
+    "./skills/engineering/zoom-out",
+    "./skills/productivity/caveman",
+    "./skills/productivity/grill-me",
+    "./skills/productivity/handoff",
+    "./skills/productivity/write-a-skill"
+  ],
+  "interface": {
+    "displayName": "NanFengCheong Skills",
+    "shortDescription": "Codex workflows for planning and shipping",
+    "longDescription": "Codex skills for feature and bug-fix flow, implementation planning, agent-team execution, TDD, diagnosis, triage, architecture review, and concise collaboration.",
+    "developerName": "NanFengCheong",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Write",
+      "Execute",
+      "Review"
+    ],
+    "websiteURL": "https://github.com/NanFengCheong/skills",
+    "privacyPolicyURL": "https://github.com/NanFengCheong/skills/blob/main/README.md",
+    "termsOfServiceURL": "https://github.com/NanFengCheong/skills/blob/main/LICENSE",
+    "defaultPrompt": [
+      "Use the NanFengCheong feature/bug-fix flow: $grill-with-docs -> $to-prd -> $to-implementation-plan -> $execute-plan-using-agent-team."
+    ],
+    "screenshots": [],
+    "brandColor": "#2563EB"
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "To Implementation Plan"
+  short_description: "Turn PRDs into executable plans"
+  default_prompt: "Use $to-implementation-plan to turn this PRD into an executable implementation plan."

@@ -1,10 +1,9 @@
 ---
 name: setup-matt-pocock-skills
-description: Sets up an `## Agent skills` block in AGENTS.md/CLAUDE.md and `docs/agents/` so the engineering skills know this repo's issue tracker (GitHub or local markdown), triage label vocabulary, and domain doc layout. Run before first use of `to-issues`, `to-prd`, `triage`, `diagnose`, `tdd`, `improve-codebase-architecture`, or `zoom-out` — or if those skills appear to be missing context about the issue tracker, triage labels, or domain docs.
-disable-model-invocation: true
+description: Set up an `## Agent skills` block in AGENTS.md or CLAUDE.md plus `docs/agents/` so Codex skills know this repo's issue tracker, triage label vocabulary, and domain doc layout. Use before first use of `to-prd`, `to-implementation-plan`, `execute-plan-using-agent-team`, `triage`, `diagnose`, `tdd`, `improve-codebase-architecture`, or `zoom-out`, or when those skills lack repo context.
 ---
 
-# Setup Matt Pocock's Skills
+# Setup Agent Skills
 
 Scaffold the per-repo configuration that the engineering skills assume:
 
@@ -35,7 +34,7 @@ Assume the user does not know what these terms mean. Each section starts with a 
 
 **Section A — Issue tracker.**
 
-> Explainer: The "issue tracker" is where issues live for this repo. Skills like `to-issues`, `triage`, `to-prd`, and `qa` read from and write to it — they need to know whether to call `gh issue create`, write a markdown file under `.scratch/`, or follow some other workflow you describe. Pick the place you actually track work for this repo.
+> Explainer: The "issue tracker" is where issues live for this repo. Skills like `triage` and `to-prd` read from and write to it — they need to know whether to call `gh issue create`, write a markdown file under `.scratch/`, or follow some other workflow you describe. Pick the place you actually track work for this repo.
 
 Default posture: these skills were designed for GitHub. If a `git remote` points at GitHub, propose that. If a `git remote` points at GitLab (`gitlab.com` or a self-hosted host), propose GitLab. Otherwise (or if the user prefers), offer:
 
@@ -80,8 +79,8 @@ Let them edit before writing.
 
 **Pick the file to edit:**
 
-- If `CLAUDE.md` exists, edit it.
-- Else if `AGENTS.md` exists, edit it.
+- If `AGENTS.md` exists, edit it.
+- Else if `CLAUDE.md` exists, edit it.
 - If neither exists, ask the user which one to create — don't pick for them.
 
 Never create `AGENTS.md` when `CLAUDE.md` already exists (or vice versa) — always edit the one that's already there.

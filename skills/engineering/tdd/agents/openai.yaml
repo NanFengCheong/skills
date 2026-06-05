@@ -1,0 +1,4 @@
+interface:
+  display_name: "TDD"
+  short_description: "Build with red-green-refactor loops"
+  default_prompt: "Use $tdd to implement this change test-first with red-green-refactor."
