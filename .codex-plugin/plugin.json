@@ -16,22 +16,7 @@
     "planning",
     "agent-team"
   ],
-  "skills": [
-    "./skills/engineering/diagnose",
-    "./skills/engineering/execute-plan-using-agent-team",
-    "./skills/engineering/grill-with-docs",
-    "./skills/engineering/improve-codebase-architecture",
-    "./skills/engineering/setup-matt-pocock-skills",
-    "./skills/engineering/tdd",
-    "./skills/engineering/to-implementation-plan",
-    "./skills/engineering/to-prd",
-    "./skills/engineering/triage",
-    "./skills/engineering/zoom-out",
-    "./skills/productivity/caveman",
-    "./skills/productivity/grill-me",
-    "./skills/productivity/handoff",
-    "./skills/productivity/write-a-skill"
-  ],
+  "skills": "./skills/",
   "interface": {
     "displayName": "NanFengCheong Skills",
     "shortDescription": "Codex workflows for planning and shipping",
