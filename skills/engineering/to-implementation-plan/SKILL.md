@@ -27,7 +27,8 @@ Write the plan to `docs/plans/YYYY-MM-DD-<slug>-implementation-plan.md`. Create 
 - Use vertical slices: each slice must produce observable behavior or a verifiable internal capability.
 - Prefer existing interfaces and test seams. Add new seams only when the plan explains why existing ones are too shallow.
 - Split agent work by disjoint write scopes where possible.
-- Include one skepticism track for assumptions, edge cases, rollback risk, and missing tests.
+- Include one skepticism track for assumptions, adversarial break hypotheses, rollback risk, and missing tests.
+- Require a hypothesis file at `docs/testing/YYYY-MM-DD-<slug>-adversarial-hypotheses.md` unless the repo has a better local convention.
 - Keep steps executable without extra interviews unless a decision is genuinely blocked.
 
 ## Plan Template
@@ -63,12 +64,20 @@ Write the plan to `docs/plans/YYYY-MM-DD-<slug>-implementation-plan.md`. Create 
 - Verify: <command or manual check>
 - Agent role: <main | worker | skeptic>
 
+## Adversarial Test Hypotheses
+
+- File: `docs/testing/YYYY-MM-DD-<slug>-adversarial-hypotheses.md`
+- Owner: Skeptic
+- Prompt: "How might this code break in production while happy-path tests still pass?"
+- Required fields: hypothesis, trigger, expected wrong behavior, invariant that must hold, test seam, priority, decision.
+- TDD rule: execute one selected hypothesis per red-green cycle; defer low-value cases with a reason instead of bulk-writing speculative tests.
+
 ## Agent Team
 
 - Lead: owns sequencing, integration, and final verification.
 - Worker A: <disjoint write scope>
 - Worker B: <disjoint write scope>
-- Skeptic: challenges assumptions, edge cases, data migration, auth/security, failure modes, and missing tests.
+- Skeptic: writes adversarial break hypotheses, challenges assumptions, data migration, auth/security, failure modes, and missing tests.
 
 ## Execution Order
 

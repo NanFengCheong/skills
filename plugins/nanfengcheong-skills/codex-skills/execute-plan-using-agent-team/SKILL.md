@@ -15,7 +15,7 @@ Execute the plan end to end. Do not stop between steps unless blocked by a real 
 4. Restate execution tracks briefly:
    - Lead: sequencing, integration, conflict resolution, final checks.
    - Workers: disjoint write scopes from the plan.
-   - Skeptic: assumptions, edge cases, failure modes, missing tests, and rollout risk.
+   - Skeptic: assumptions, edge cases, adversarial break hypotheses, missing tests, and rollout risk.
 
 ## Agent Team Rules
 
@@ -27,6 +27,7 @@ When spawning workers:
 - Avoid overlapping file ownership unless unavoidable.
 - Ask each worker to edit files directly and report changed paths plus verification.
 - Keep the skeptic read-only unless you explicitly assign a narrow fix.
+- Ask the skeptic to save adversarial break hypotheses to the plan's hypothesis file before TDD starts.
 - Continue useful lead work while workers run.
 
 ## Execution Loop
@@ -34,11 +35,13 @@ When spawning workers:
 For each slice:
 
 1. Re-read the slice and current files in scope.
-2. Implement the smallest change that satisfies the slice.
-3. Add or update tests at the seam named in the plan.
-4. Run the slice verification.
-5. Integrate worker output, resolving conflicts without reverting unrelated user work.
-6. Run the skeptic pass for that slice; fix confirmed issues.
+2. Generate or update adversarial hypotheses for how this slice could break while happy-path tests pass.
+3. Add or update one failing test at the seam named in the plan.
+4. Implement the smallest change that satisfies that test.
+5. Repeat red-green for selected adversarial hypotheses, highest risk first.
+6. Run the slice verification.
+7. Integrate worker output, resolving conflicts without reverting unrelated user work.
+8. Run the skeptic pass for that slice; fix confirmed issues.
 
 ## Verification
 
@@ -47,6 +50,7 @@ Before finishing:
 - Run every verification command listed in the plan that is feasible locally.
 - Run focused checks for files you touched.
 - Re-run any failing check after fixes.
+- Confirm tested adversarial hypotheses are marked in the hypothesis file, with deferrals explained.
 - If a check cannot run, record the exact blocker and what remains unverified.
 - Inspect `git diff --check`.
 - Summarize changed files and behavioral proof.

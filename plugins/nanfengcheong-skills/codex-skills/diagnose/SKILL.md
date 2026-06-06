@@ -72,6 +72,8 @@ Each hypothesis must be **falsifiable**: state the prediction it makes.
 
 If you cannot state the prediction, the hypothesis is a vibe — discard or sharpen it.
 
+Save the ranked list to `docs/testing/YYYY-MM-DD-<slug>-bug-hypotheses.md` when the repo has a docs area. Include the symptom, repro command, hypothesis, prediction, and eventual result. This file becomes the source for the regression test and prevents losing discarded theories.
+
 **Show the ranked list to the user before testing.** They often have domain knowledge that re-ranks instantly ("we just deployed a change to #3"), or know hypotheses they've already ruled out. Cheap checkpoint, big time saver. Don't block on it — proceed with your ranking if the user is AFK.
 
 ## Phase 4 — Instrument
@@ -100,9 +102,10 @@ If a correct seam exists:
 
 1. Turn the minimised repro into a failing test at that seam.
 2. Watch it fail.
-3. Apply the fix.
-4. Watch it pass.
-5. Re-run the Phase 1 feedback loop against the original (un-minimised) scenario.
+3. Add adversarial regression cases from the saved hypothesis file, one red-green cycle at a time.
+4. Apply the fix.
+5. Watch the tests pass.
+6. Re-run the Phase 1 feedback loop against the original (un-minimised) scenario.
 
 ## Phase 6 — Cleanup + post-mortem
 

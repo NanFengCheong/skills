@@ -40,6 +40,22 @@ RIGHT (vertical):
   ...
 ```
 
+## Adversarial Test Hypotheses
+
+Before RED, ask an adversarial reviewer or skeptic track: "How might this code break in production while normal happy-path tests still pass?"
+
+Save the answer to `docs/testing/YYYY-MM-DD-<slug>-adversarial-hypotheses.md` before writing tests. If the repo has an existing test-plan or QA notes directory, use that instead.
+
+The file must contain:
+
+- Feature or bug scope.
+- Public interface under test.
+- 5-10 ranked break hypotheses.
+- For each hypothesis: triggering input/state, expected wrong behavior, behavior that should hold, and test seam.
+- Decision: `test now`, `defer with reason`, or `out of scope`.
+
+Use the file as a queue for TDD. Pick the highest-risk `test now` hypothesis and run one red-green cycle. Do not write every adversarial test at once.
+
 ## Workflow
 
 ### 1. Planning
@@ -53,6 +69,7 @@ Before writing any code:
 - [ ] Identify opportunities for [deep modules](deep-modules.md) (small interface, deep implementation)
 - [ ] Design interfaces for [testability](interface-design.md)
 - [ ] List the behaviors to test (not implementation steps)
+- [ ] Generate and save adversarial break hypotheses
 - [ ] Get user approval on the plan
 
 Ask: "What should the public interface look like? Which behaviors are most important to test?"
@@ -82,6 +99,7 @@ GREEN: Minimal code to pass → passes
 Rules:
 
 - One test at a time
+- Pull adversarial cases from the saved hypothesis file, highest risk first
 - Only enough code to pass current test
 - Don't anticipate future tests
 - Keep tests focused on observable behavior
@@ -104,6 +122,7 @@ After all tests pass, look for [refactor candidates](refactoring.md):
 [ ] Test describes behavior, not implementation
 [ ] Test uses public interface only
 [ ] Test would survive internal refactor
+[ ] Test maps to a saved behavior or adversarial hypothesis
 [ ] Code is minimal for this test
 [ ] No speculative features added
 ```
