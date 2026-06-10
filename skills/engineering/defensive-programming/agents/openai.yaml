@@ -1,0 +1,4 @@
+interface:
+  display_name: "Defensive Programming"
+  short_description: "Fail fast, validate at boundaries, write safe code"
+  default_prompt: "Use $defensive-programming to review or write code with defensive programming patterns."

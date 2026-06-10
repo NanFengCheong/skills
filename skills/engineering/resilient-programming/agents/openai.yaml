@@ -1,0 +1,4 @@
+interface:
+  display_name: "Resilient Programming"
+  short_description: "Build systems that survive failures"
+  default_prompt: "Use $resilient-programming to make this integration or service resilient to failures."

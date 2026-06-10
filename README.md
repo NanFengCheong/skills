@@ -101,10 +101,12 @@ The generated files live under `docs/agents/`.
 
 ### Engineering
 
+- **[defensive-programming](./skills/engineering/defensive-programming/SKILL.md)** - Validate at boundaries, fail fast, guard clauses, preconditions, defensive copies.
 - **[diagnose](./skills/engineering/diagnose/SKILL.md)** - Disciplined diagnosis loop for hard bugs and performance regressions.
 - **[execute-plan-using-agent-team](./skills/engineering/execute-plan-using-agent-team/SKILL.md)** - Execute an implementation plan with Codex agent-team tracks.
 - **[grill-with-docs](./skills/engineering/grill-with-docs/SKILL.md)** - Capture intent, challenge plans against the domain model, and update docs inline.
 - **[improve-codebase-architecture](./skills/engineering/improve-codebase-architecture/SKILL.md)** - Find deepening opportunities informed by `CONTEXT.md` and ADRs.
+- **[resilient-programming](./skills/engineering/resilient-programming/SKILL.md)** - Retries with backoff, circuit breakers, bulkheads, timeouts, graceful degradation, fallbacks.
 - **[setup-matt-pocock-skills](./skills/engineering/setup-matt-pocock-skills/SKILL.md)** - Configure repo-local issue tracker, triage, and domain-doc context.
 - **[tdd](./skills/engineering/tdd/SKILL.md)** - Test-driven development with red-green-refactor loops.
 - **[to-implementation-plan](./skills/engineering/to-implementation-plan/SKILL.md)** - Turn a PRD into executable slices and verification gates.

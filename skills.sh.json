@@ -6,10 +6,12 @@
       "title": "Engineering",
       "description": "Skills for daily code work: planning, implementation, debugging, triage, and architecture review.",
       "skills": [
+        "defensive-programming",
         "diagnose",
         "execute-plan-using-agent-team",
         "grill-with-docs",
         "improve-codebase-architecture",
+        "resilient-programming",
         "setup-matt-pocock-skills",
         "tdd",
         "to-implementation-plan",
