@@ -47,14 +47,45 @@ codex plugin add nanfengcheong-skills@nanfengcheong-skills
 
 Restart Codex or start a new session so the installed skills are loaded.
 
-## Default Flow
+## Typical Agent Engineering Flow
 
-Use this sequence for feature work and bug fixes:
+Run through these skills in sequence for feature work and bug fixes:
 
-1. `$grill-with-docs` -> capture intent, clarify scope, sharpen vocabulary, update `CONTEXT.md`/ADRs when useful.
-2. `$to-prd` -> publish the agreed scope as a PRD.
-3. `$to-implementation-plan` -> convert the PRD into executable slices, checks, and agent-team tracks.
-4. `$execute-plan-using-agent-team` -> implement with lead, worker, and skeptic tracks, then verify.
+### 1. Capture Intent
+
+`$grill-with-docs` — clarify scope, sharpen vocabulary against the domain model. Updates `CONTEXT.md` and ADRs inline.
+
+### 2. Publish PRD
+
+`$to-prd` — synthesize conversation into a problem statement, user stories, implementation and testing decisions, and out-of-scope boundaries. Posts to the project issue tracker.
+
+### 3. Slice Into Plan
+
+`$to-implementation-plan` — convert the PRD into executable slices, each with a write scope, test seam, and verification gate.
+
+### 4. Execute With Agent Team
+
+`$execute-plan-using-agent-team` — runs the plan with three tracks:
+
+| Role | Responsibility |
+|------|---------------|
+| **Lead** | Sequencing, integration, conflict resolution, final checks |
+| **Workers** | Disjoint write scopes, one per plan slice |
+| **Skeptic** | Adversarial break hypotheses, edge cases, missing tests, rollout risk |
+
+Each slice follows a red-green loop: adversarial hypothesis generation → failing test → minimal implementation → slice verification → skeptic pass.
+
+### Debug
+
+`$diagnose` — systematic loop for hard bugs: build a feedback loop → reproduce → hypothesise (3-5 falsifiable predictions) → instrument → fix + regression test.
+
+### Triage
+
+`$triage` — move issues through canonical triage states (triage → ready-for-agent → in-progress → review → done).
+
+### Architecture
+
+`$improve-codebase-architecture` — find deepening opportunities informed by `CONTEXT.md` and ADRs. Run after a fix reveals no good test seam or tangled coupling.
 
 ## Setup Per Repo
 
