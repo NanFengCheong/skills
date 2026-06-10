@@ -1,0 +1,32 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Engineering",
+      "description": "Skills for daily code work: planning, implementation, debugging, triage, and architecture review.",
+      "skills": [
+        "diagnose",
+        "execute-plan-using-agent-team",
+        "grill-with-docs",
+        "improve-codebase-architecture",
+        "setup-matt-pocock-skills",
+        "tdd",
+        "to-implementation-plan",
+        "to-prd",
+        "triage",
+        "zoom-out"
+      ]
+    },
+    {
+      "title": "Productivity",
+      "description": "Workflow skills for concise communication, decision-making, handoffs, and skill authoring.",
+      "skills": [
+        "caveman",
+        "grill-me",
+        "handoff",
+        "write-a-skill"
+      ]
+    }
+  ]
+}

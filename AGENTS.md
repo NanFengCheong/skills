@@ -12,3 +12,13 @@ Every skill in `engineering/`, `productivity/`, or `misc/` must have a reference
 Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.
 
 Each bucket folder has a `README.md` that lists every skill in the bucket with a one-line description, with the skill name linked to its `SKILL.md`.
+
+## npx skills ecosystem
+
+This repo is compatible with the [open agent skills ecosystem](https://agentskills.io). To install:
+
+```bash
+npx skills add NanFengCheong/skills
+```
+
+Each skill directory name becomes its `npx skills` identifier. The `name` field in `SKILL.md` frontmatter must match the directory name. The `skills.sh.json` at the repo root controls grouping on [skills.sh](https://skills.sh/NanFengCheong/skills).

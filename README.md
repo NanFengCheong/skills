@@ -2,17 +2,46 @@
 
 Codex-optimized skills for planning, implementing, debugging, triage, architecture review, and concise collaboration.
 
+[![skills.sh](https://skills.sh/b/NanFengCheong/skills)](https://skills.sh/NanFengCheong/skills)
+
 ## Install
 
-Add the marketplace:
+### Via npx (any project, no Codex marketplace needed)
+
+```bash
+npx @nanfengcheong/skills link
+```
+
+This symlinks all skills to `~/.claude/skills` so they're available to Codex, opencode, and Claude CLI.
+
+List available skills:
+
+```bash
+npx @nanfengcheong/skills list
+```
+
+### Via npx skills (Vercel ecosystem)
+
+```bash
+npx skills add NanFengCheong/skills
+```
+
+Install to specific agents:
+
+```bash
+npx skills add NanFengCheong/skills --all -y
+```
+
+Use a single skill without installing:
+
+```bash
+npx skills use NanFengCheong/skills@diagnose
+```
+
+### Via Codex marketplace
 
 ```bash
 codex plugin marketplace add NanFengCheong/skills --ref main
-```
-
-Install the plugin:
-
-```bash
 codex plugin add nanfengcheong-skills@nanfengcheong-skills
 ```
 
@@ -64,6 +93,7 @@ The generated files live under `docs/agents/`.
 - `.agents/plugins/marketplace.json` - Codex marketplace entry.
 - `plugins/nanfengcheong-skills/` - marketplace plugin wrapper.
 - `.codex-plugin/plugin.json` - plugin manifest.
+- `skills.sh.json` - grouping config for [skills.sh](https://skills.sh) directory.
 - `skills/engineering/` - code-work skills.
 - `skills/productivity/` - general workflow skills.
 
