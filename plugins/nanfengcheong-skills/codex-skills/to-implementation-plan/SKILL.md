@@ -29,6 +29,9 @@ Write the plan to `docs/plans/YYYY-MM-DD-<slug>-implementation-plan.md`. Create 
 - Split agent work by disjoint write scopes where possible.
 - Include one skepticism track for assumptions, adversarial break hypotheses, rollback risk, and missing tests.
 - Require a hypothesis file at `docs/testing/YYYY-MM-DD-<slug>-adversarial-hypotheses.md` unless the repo has a better local convention.
+- Require each slice to name its initial signal: failing test for a bug, expected RED test for new behavior, or current passing baseline when neither exists yet.
+- Require each slice to include a smoke verification path through the highest practical real interface: UI, API, CLI, job, or provider adapter.
+- Require before/after comparison: output, state, response, log, metric, or screenshot that proves intended behavior changed without obvious adjacent drift.
 - Keep steps executable without extra interviews unless a decision is genuinely blocked.
 
 ## Plan Template
@@ -60,8 +63,11 @@ Write the plan to `docs/plans/YYYY-MM-DD-<slug>-implementation-plan.md`. Create 
 
 - Scope: <behavior/capability>
 - Files likely touched: <paths or modules>
-- Tests: <test files/commands>
-- Verify: <command or manual check>
+- Initial signal: <failing test, expected RED test, or baseline command before edits>
+- Tests: <test files/commands, including intended failure before implementation>
+- Smoke: <real UI/API/CLI/job/provider path to exercise after implementation>
+- Compare: <before/after output, state, response, log, metric, or screenshot>
+- Verify: <focused command plus smoke command/manual check>
 - Agent role: <main | worker | skeptic>
 
 ## Adversarial Test Hypotheses
@@ -81,9 +87,9 @@ Write the plan to `docs/plans/YYYY-MM-DD-<slug>-implementation-plan.md`. Create 
 
 ## Execution Order
 
-1. <Step> -> verify: <check>
-2. <Step> -> verify: <check>
-3. <Step> -> verify: <check>
+1. Capture baseline or intended failing signal -> verify: <check fails/passes for expected reason>
+2. Write the smallest code change for the slice -> verify: <focused test passes>
+3. Run slice smoke and compare before/after -> verify: <observable behavior matches goal and adjacent behavior still holds>
 
 ## Risks
 
@@ -92,6 +98,8 @@ Write the plan to `docs/plans/YYYY-MM-DD-<slug>-implementation-plan.md`. Create 
 ## Completion Criteria
 
 - <User-visible behavior or bug fix proof>
+- <Initial signal captured before code and final signal compared after code>
+- <Smoke test proof for overall flow or targeted changed path>
 - <Automated checks>
 - <Docs/config/deploy notes if relevant>
 ```

@@ -56,6 +56,16 @@ The file must contain:
 
 Use the file as a queue for TDD. Pick the highest-risk `test now` hypothesis and run one red-green cycle. Do not write every adversarial test at once.
 
+## Done Means Compared Proof
+
+Do not claim done from implementation alone. Each change needs:
+
+- Initial signal before implementation: failing test for a bug, RED test for new behavior, or documented passing baseline when no failure should exist yet.
+- Focused GREEN signal after implementation.
+- Smoke check through the highest practical real interface: UI, API, CLI, job, or adapter.
+- Before/after comparison showing the intended behavior changed and nearby behavior still holds.
+- Remaining corner cases either tested, deferred with reason, or marked out of scope in the hypothesis file.
+
 ## Workflow
 
 ### 1. Planning
@@ -69,6 +79,8 @@ Before writing any code:
 - [ ] Identify opportunities for [deep modules](deep-modules.md) (small interface, deep implementation)
 - [ ] Design interfaces for [testability](interface-design.md)
 - [ ] List the behaviors to test (not implementation steps)
+- [ ] Identify the initial failing/RED/baseline command to run before code
+- [ ] Identify the smoke check and before/after comparison signal
 - [ ] Generate and save adversarial break hypotheses
 - [ ] Get user approval on the plan
 
@@ -81,8 +93,11 @@ Ask: "What should the public interface look like? Which behaviors are most impor
 Write ONE test that confirms ONE thing about the system:
 
 ```
-RED:   Write test for first behavior → test fails
-GREEN: Write minimal code to pass → test passes
+BASELINE: Run current focused check → fails/passes for expected reason
+RED:      Write test for first behavior → test fails for intended reason
+GREEN:    Write minimal code to pass → test passes
+SMOKE:    Exercise real UI/API/CLI/job/adapter path → behavior observable
+COMPARE:  Compare before/after signal → intended change only
 ```
 
 This is your tracer bullet - proves the path works end-to-end.
@@ -92,8 +107,9 @@ This is your tracer bullet - proves the path works end-to-end.
 For each remaining behavior:
 
 ```
-RED:   Write next test → fails
-GREEN: Minimal code to pass → passes
+RED:     Write next test → fails for intended reason
+GREEN:   Minimal code to pass → passes
+COMPARE: Check focused before/after signal when behavior surface changes
 ```
 
 Rules:
@@ -123,6 +139,11 @@ After all tests pass, look for [refactor candidates](refactoring.md):
 [ ] Test uses public interface only
 [ ] Test would survive internal refactor
 [ ] Test maps to a saved behavior or adversarial hypothesis
+[ ] Test failed for the intended reason before implementation
 [ ] Code is minimal for this test
 [ ] No speculative features added
+[ ] Focused test passes after implementation
+[ ] Smoke check covers either the overall flow or the specific changed path
+[ ] Before/after comparison rules out obvious adjacent regression
+[ ] Untested corner cases are explicitly deferred or out of scope
 ```

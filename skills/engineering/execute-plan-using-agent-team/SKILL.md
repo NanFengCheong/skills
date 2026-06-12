@@ -1,6 +1,6 @@
 ---
 name: execute-plan-using-agent-team
-description: Execute an implementation plan with a Codex agent team, including lead integration, bounded worker tracks, a skepticism track, and final verification. Use after `$to-implementation-plan`, or when the user asks to execute a plan with agents.
+description: Execute an implementation plan with a Codex agent team, including lead integration, bounded worker tracks, skepticism, verification QA, and final proof. Use after `$to-implementation-plan`, or when the user asks to execute a plan with agents.
 ---
 
 # Execute Plan Using Agent Team
@@ -11,11 +11,15 @@ Execute the plan end to end. Do not stop between steps unless blocked by a real 
 
 1. Read the implementation plan.
 2. Check `git status --short --branch`; preserve unrelated user changes.
-3. Identify verification commands before editing.
-4. Restate execution tracks briefly:
+3. Identify verification commands before editing: focused test, broader smoke test, and any before/after comparison signal.
+4. Run the fastest relevant baseline check before editing when feasible. For bug fixes, capture the failing signal first; for new work, capture the current passing baseline or document why no baseline exists.
+5. Restate execution tracks briefly:
    - Lead: sequencing, integration, conflict resolution, final checks.
    - Workers: disjoint write scopes from the plan.
    - Skeptic: assumptions, edge cases, adversarial break hypotheses, missing tests, and rollout risk.
+   - Verification QA: independent post-change validation against acceptance criteria, tests, diffs, and user-visible behavior.
+
+Treat larger tasks as requiring separate Skeptic and Verification QA agents when subagents are available. A task is larger when it has multiple slices, crosses module boundaries, touches shared contracts, changes user-facing behavior, or has meaningful release/security/data risk.
 
 ## Agent Team Rules
 
@@ -28,6 +32,8 @@ When spawning workers:
 - Ask each worker to edit files directly and report changed paths plus verification.
 - Keep the skeptic read-only unless you explicitly assign a narrow fix.
 - Ask the skeptic to save adversarial break hypotheses to the plan's hypothesis file before TDD starts.
+- Keep Verification QA read-only. Ask QA to verify only after integrated changes exist, using the plan, acceptance criteria, touched paths, and allowed commands.
+- Do not merge Skeptic and Verification QA for larger tasks. Skeptic challenges the approach before and during implementation; QA validates the finished behavior independently.
 - Continue useful lead work while workers run.
 
 ## Execution Loop
@@ -37,11 +43,14 @@ For each slice:
 1. Re-read the slice and current files in scope.
 2. Generate or update adversarial hypotheses for how this slice could break while happy-path tests pass.
 3. Add or update one failing test at the seam named in the plan.
-4. Implement the smallest change that satisfies that test.
-5. Repeat red-green for selected adversarial hypotheses, highest risk first.
-6. Run the slice verification.
-7. Integrate worker output, resolving conflicts without reverting unrelated user work.
-8. Run the skeptic pass for that slice; fix confirmed issues.
+4. Run the test and confirm it fails for the intended reason. If it passes unexpectedly, tighten the test or pick a better seam before implementation.
+5. Implement the smallest change that satisfies that test.
+6. Re-run the focused test, then run the slice smoke check from the plan.
+7. Compare before/after behavior or output for the slice. Confirm the intended change happened and unrelated behavior did not drift.
+8. Repeat red-green for selected adversarial hypotheses, highest risk first.
+9. Integrate worker output, resolving conflicts without reverting unrelated user work.
+10. Run the skeptic pass for that slice; fix confirmed issues.
+11. For larger or higher-risk slices, run Verification QA after fixes; treat confirmed QA failures as new slice work.
 
 ## Verification
 
@@ -49,11 +58,14 @@ Before finishing:
 
 - Run every verification command listed in the plan that is feasible locally.
 - Run focused checks for files you touched.
+- Run at least one smoke check that exercises the changed behavior through a real user/API/CLI path, unless the plan explains why that is impossible.
+- Compare the final result against the baseline captured before editing. For bug fixes, the original failing signal must now pass; for feature work, the baseline must still pass and the new behavior must be observable.
 - Re-run any failing check after fixes.
 - Confirm tested adversarial hypotheses are marked in the hypothesis file, with deferrals explained.
+- Run Verification QA for larger tasks before the final report. Ask QA to check acceptance criteria, changed-path diffs, missed edge cases, and whether verification evidence actually proves the requested behavior.
 - If a check cannot run, record the exact blocker and what remains unverified.
 - Inspect `git diff --check`.
-- Summarize changed files and behavioral proof.
+- Summarize changed files, initial signal, final signal, smoke proof, and remaining corner-case risk.
 
 ## Finish
 
@@ -61,6 +73,8 @@ Report:
 
 - Plan path executed.
 - Slices completed.
+- Initial failing/baseline signal and final comparison.
 - Tests/checks run and results.
+- Skeptic and Verification QA findings, including fixes made or explicit deferrals.
 - Any skipped checks with blockers.
 - Remaining manual deploy or release steps, if any.

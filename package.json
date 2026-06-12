@@ -1,0 +1,39 @@
+{
+  "name": "@nanfengcheong/skills",
+  "version": "0.1.0",
+  "description": "Codex-optimized engineering and productivity skills for planning, implementation, triage, debugging, and concise collaboration.",
+  "bin": {
+    "nanfengcheong-skills": "./bin/cli.js",
+    "skills": "./bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NanFengCheong/skills.git"
+  },
+  "homepage": "https://github.com/NanFengCheong/skills",
+  "license": "MIT",
+  "author": {
+    "name": "NanFengCheong",
+    "url": "https://github.com/NanFengCheong"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "scripts/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "codex",
+    "skills",
+    "engineering",
+    "planning",
+    "agent-team"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
