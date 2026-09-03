@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cucuma Solution Architect"
-  short_description: "Resolve authority and delivery boundary decisions"
-  default_prompt: "Use $cucuma-solution-architect to compare this boundary change against live ADRs and draft an evidence-backed decision."

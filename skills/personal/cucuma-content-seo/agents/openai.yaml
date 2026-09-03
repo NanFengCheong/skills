@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cucuma Content SEO"
-  short_description: "Source editorial drafts and truthful search content"
-  default_prompt: "Use $cucuma-content-seo to prepare a sourced editorial draft with search intent, offer evidence, and asset rights."

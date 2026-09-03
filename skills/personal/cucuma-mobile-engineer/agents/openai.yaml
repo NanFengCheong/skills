@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cucuma Mobile Engineer"
-  short_description: "Build native journeys with device recovery proof"
-  default_prompt: "Use $cucuma-mobile-engineer to implement this Expo journey and verify interrupted-network recovery on the relevant devices."

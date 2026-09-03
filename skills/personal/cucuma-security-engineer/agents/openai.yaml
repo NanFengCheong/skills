@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cucuma Security Engineer"
-  short_description: "Review threats, tenant isolation, secrets, and privacy"
-  default_prompt: "Use $cucuma-security-engineer to review this trust boundary with scoped non-destructive checks and a prioritized findings register."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cucuma Platform Operator"
-  short_description: "Plan safe Cloudflare rollouts and diagnose incidents"
-  default_prompt: "Use $cucuma-platform-operator to diagnose this environment read-only and prepare an evidence-backed operational plan."

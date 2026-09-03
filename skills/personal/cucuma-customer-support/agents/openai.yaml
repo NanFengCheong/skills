@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cucuma Customer Support"
-  short_description: "Triage cases and draft careful customer replies"
-  default_prompt: "Use $cucuma-customer-support to prepare a redacted case brief and an evidence-based customer reply draft."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cucuma Supplier Partnerships"
-  short_description: "Onboard partners from websites, brochures or cards"
-  default_prompt: "Use $cucuma-supplier-partnerships to onboard this partner from the supplied website, brochure, name card or company name: research, personalized pitch, authorized outreach and follow-ups, and verified product drafts."

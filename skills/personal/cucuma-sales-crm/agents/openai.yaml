@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cucuma Sales CRM"
-  short_description: "Qualify leads and draft proposals and follow-ups"
-  default_prompt: "Use $cucuma-sales-crm to review my lead pipeline and prepare evidence-backed next steps and unsent follow-ups."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cucuma Finance Reconciliation"
-  short_description: "Match settlements, refunds, fees, and cash forecasts"
-  default_prompt: "Use $cucuma-finance-reconciliation to reconcile the requested period and prepare a cashflow forecast with owned exceptions."

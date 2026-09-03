@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cucuma Catalog Merchandiser"
-  short_description: "Normalize catalog drafts and sellability evidence"
-  default_prompt: "Use $cucuma-catalog-merchandiser to normalize supplier drafts and report provenance, rights, and sellability gaps."

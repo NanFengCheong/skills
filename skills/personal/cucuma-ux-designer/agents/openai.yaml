@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cucuma UX Designer"
-  short_description: "Design accessible web and native customer journeys"
-  default_prompt: "Use $cucuma-ux-designer to specify the interaction states, copy, and accessibility behavior for this customer journey."
