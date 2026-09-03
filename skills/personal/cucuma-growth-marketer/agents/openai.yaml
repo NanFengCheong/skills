@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cucuma Growth Marketer"
+  short_description: "Design growth experiments and budget proposals"
+  default_prompt: "Use $cucuma-growth-marketer to draft a bounded campaign experiment with measurement rules and a budget proposal."

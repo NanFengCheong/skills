@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cucuma Quality Engineer"
+  short_description: "Verify acceptance and adversarial behavior independently"
+  default_prompt: "Use $cucuma-quality-engineer to assess this fixed revision against acceptance criteria and produce reproducible evidence gaps."

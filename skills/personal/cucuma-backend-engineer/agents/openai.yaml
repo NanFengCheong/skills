@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cucuma Backend Engineer"
+  short_description: "Build authoritative commerce and BFF behavior"
+  default_prompt: "Use $cucuma-backend-engineer to map this server change to its owning module and implement it through the existing factory flow."

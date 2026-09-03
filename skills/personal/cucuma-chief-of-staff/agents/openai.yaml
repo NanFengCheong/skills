@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cucuma Chief of Staff"
+  short_description: "Coordinate business and engineering specialists"
+  default_prompt: "Use $cucuma-chief-of-staff to prioritize today's Cucuma work and coordinate the smallest specialist team needed to finish it."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cucuma Product Manager"
+  short_description: "Prioritize customer problems and acceptance"
+  default_prompt: "Use $cucuma-product-manager to turn customer evidence into a prioritized decision brief with measurable acceptance."

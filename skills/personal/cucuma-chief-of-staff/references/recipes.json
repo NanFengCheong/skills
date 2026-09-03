@@ -1,0 +1,20 @@
+{
+  "contract_version": 1,
+  "modules": {
+    "source-intake": {"revision": 1, "owner": "cucuma-supplier-partnerships", "path": "cucuma-supplier-partnerships/references/source-intake.md", "inputs": ["source"], "outputs": ["partner_brief", "product_candidates"]},
+    "qualification": {"revision": 1, "owner": "cucuma-supplier-partnerships", "path": "cucuma-supplier-partnerships/references/qualification.md", "inputs": ["partner_brief"], "outputs": ["qualification"]},
+    "pitch-and-conversation": {"revision": 1, "owner": "cucuma-supplier-partnerships", "path": "cucuma-supplier-partnerships/references/pitch-and-conversation.md", "inputs": ["partner_brief", "qualification"], "outputs": ["conversation"]},
+    "commercial-terms": {"revision": 1, "owner": "cucuma-supplier-partnerships", "path": "cucuma-supplier-partnerships/references/commercial-terms.md", "inputs": ["partner_brief", "conversation"], "outputs": ["commercial_terms"]},
+    "product-setup": {"revision": 1, "owner": "cucuma-catalog-merchandiser", "path": "cucuma-catalog-merchandiser/references/product-setup.md", "inputs": ["partner_brief", "product_candidates"], "outputs": ["catalog_package"]},
+    "partner-activation": {"revision": 2, "owner": "cucuma-quality-engineer", "path": "cucuma-quality-engineer/references/partner-activation.md", "inputs": ["partner_brief", "commercial_terms", "catalog_package"], "outputs": ["activation_decision"], "decision_field": "activation_decision.decision", "decision_values": ["ready", "not_ready", "unproven"]},
+    "partner-lifecycle": {"revision": 1, "owner": "cucuma-supplier-partnerships", "path": "cucuma-supplier-partnerships/references/partner-lifecycle.md", "inputs": ["partner_brief", "commercial_terms", "activation_decision"], "outputs": ["lifecycle_actions"]}
+  },
+  "recipes": {
+    "partner-onboarding": {"inputs": ["source"], "steps": ["source-intake", "qualification", "pitch-and-conversation", "commercial-terms", "product-setup", "partner-activation"], "outputs": ["activation_decision"], "gates": ["Stop outreach when qualification says defer or identity/contact is unresolved.", "Product draft preparation may proceed independently of commercial negotiation once source inputs exist.", "activation_decision.decision not_ready or unproven blocks activation; ready still requires release authority."]},
+    "source-to-drafts": {"inputs": ["source"], "steps": ["source-intake", "product-setup"], "outputs": ["catalog_package"], "gates": ["No pitch, negotiation or publication is implied."]},
+    "pitch-only": {"inputs": ["partner_brief"], "steps": ["qualification", "pitch-and-conversation"], "outputs": ["conversation"], "gates": ["Default to prepare mode unless the user requested sending."]},
+    "catalog-refresh": {"inputs": ["partner_brief", "product_candidates"], "steps": ["product-setup"], "outputs": ["catalog_package"], "gates": ["Preserve stable product IDs and existing booking snapshots; do not restart recruitment."]},
+    "readiness-review": {"inputs": ["partner_brief", "commercial_terms", "catalog_package"], "steps": ["partner-activation"], "outputs": ["activation_decision"], "gates": ["Use existing artifacts and current evidence without replaying outreach or setup."]},
+    "partner-operations": {"inputs": ["partner_brief", "commercial_terms", "activation_decision"], "steps": ["partner-lifecycle"], "outputs": ["lifecycle_actions"], "gates": ["Run only the lifecycle branch matching the current event; do not execute all branches."]}
+  }
+}

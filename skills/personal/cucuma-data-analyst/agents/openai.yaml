@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cucuma Data Analyst"
+  short_description: "Define metrics and explain conversion evidence"
+  default_prompt: "Use $cucuma-data-analyst to define this funnel and analyze its conversion evidence with explicit data-quality limits."

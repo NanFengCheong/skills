@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cucuma Compliance Risk"
+  short_description: "Prepare bounded launch, privacy, and contract evidence"
+  default_prompt: "Use $cucuma-compliance-risk to prepare a scoped evidence register and a decision brief for qualified review."

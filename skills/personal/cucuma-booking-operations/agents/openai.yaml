@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cucuma Booking Operations"
+  short_description: "Resolve booking exceptions without duplicate effects"
+  default_prompt: "Use $cucuma-booking-operations to investigate a booking exception and prepare an evidence-backed recovery decision."

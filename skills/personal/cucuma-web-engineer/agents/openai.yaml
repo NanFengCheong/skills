@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cucuma Web Engineer"
+  short_description: "Build TanStack storefront journeys and recovery"
+  default_prompt: "Use $cucuma-web-engineer to implement this storefront journey with BFF contract fidelity and accessible recovery states."
